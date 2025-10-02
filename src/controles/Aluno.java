@@ -29,6 +29,8 @@ import javax.persistence.Table;
     @NamedQuery(name = "Aluno.findByIdturma", query = "SELECT a FROM Aluno a WHERE a.idturma = :idturma"),
     @NamedQuery(name = "Aluno.findByTelefone", query = "SELECT a FROM Aluno a WHERE a.telefone = :telefone"),
     @NamedQuery(name = "Aluno.findBySituacao", query = "SELECT a FROM Aluno a WHERE a.situacao = :situacao"),
+    @NamedQuery(name = "Aluno.ConsultaCurso", query = "SELECT a FROM Aluno a WHERE a.idinstituicao = :idinstituicao AND a.idcurso like :idcurso"),
+    @NamedQuery(name = "Aluno.ConsultaTurma", query = "SELECT a FROM Aluno a WHERE a.idinstituicao = :idinstituicao and a.idcurso = :idcurso and a.idturma = :idturma"),
     @NamedQuery(name = "Aluno.findByIdcaixa", query = "SELECT a FROM Aluno a WHERE a.idcaixa = :idcaixa")})
 public class Aluno implements Serializable {
 

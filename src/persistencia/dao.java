@@ -124,4 +124,28 @@ public class dao {
         objeto = ent.find(Turma.class, objeto.getTurmaPK());
         return objeto;
     }
+    
+    //  Método para consultas com 2 campos (integer/string) 
+    public static List listar(String nomePesquisa, String parametro1, int chave1, String parametro2, String chave2) { 
+        EntityManager ent; 
+        ent = Persistence.createEntityManagerFactory("UP").createEntityManager(); 
+        Query q = ent.createNamedQuery(nomePesquisa); 
+        q.setParameter(parametro1, chave1); 
+        q.setParameter(parametro2, chave2); 
+        List lista = q.getResultList(); 
+        return lista; 
+    }
+    
+    //  Método para consultas com 3 campos (integer/string/string) 
+    public static List listar(String nomePesquisa, String parametro1, int chave1, String parametro2, String chave2, String parametro3, String chave3) { 
+        EntityManager ent; 
+        ent = Persistence.createEntityManagerFactory("UP").createEntityManager(); 
+        Query q = ent.createNamedQuery(nomePesquisa); 
+        q.setParameter(parametro1, chave1); 
+        q.setParameter(parametro2, chave2); 
+        q.setParameter(parametro3, chave3); 
+        List lista = q.getResultList(); 
+        return lista; 
+    }
+    
 }
