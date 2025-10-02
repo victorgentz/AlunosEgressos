@@ -4,9 +4,11 @@
  */
 package persistencia;
 
+import controles.Curso;
 import java.util.List; 
 import javax.persistence.*;
 import controles.Instituicao; 
+import controles.Turma;
 import persistencia.dao;
 
 
@@ -106,5 +108,20 @@ public class dao {
         q.setParameter(parametro, chave); 
         Object objeto = q.getSingleResult(); 
         return objeto; 
-    } 
+    }
+    
+    // Metodos que serão utilizados nas tabelas com chaves compostas
+    public static Curso consultar (Curso objeto){
+        EntityManager ent;
+        ent = Persistence.createEntityManagerFactory("UP").createEntityManager();
+        objeto = ent.find(Curso.class, objeto.getCursoPK());
+        return objeto;
+    }
+    
+    public static Turma consultar (Turma objeto){
+        EntityManager ent;
+        ent = Persistence.createEntityManagerFactory("UP").createEntityManager();
+        objeto = ent.find(Turma.class, objeto.getTurmaPK());
+        return objeto;
+    }
 }

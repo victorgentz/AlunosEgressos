@@ -63,7 +63,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="rotulo6" alignment="0" pref="90" max="32767" attributes="0"/>
+                                      <Component id="rotulo6" alignment="0" pref="100" max="32767" attributes="0"/>
                                       <Component id="rotulo5" alignment="0" pref="0" max="32767" attributes="0"/>
                                       <Component id="rotulo4" alignment="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
@@ -74,30 +74,30 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
                                       <Component id="campo5" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="177" max="32767" attributes="0"/>
-                                      <Component id="bSalvar2" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="campo3" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace pref="167" max="32767" attributes="0"/>
                                       <Component id="bSair1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="campo4" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="bExcluir1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="campo1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="campo3" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Component id="bConsultar1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="campo2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="campo4" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Component id="bLimpar1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="campo1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="bSalvar2" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="campo2" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="bExcluir1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -114,34 +114,34 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="rotulo2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="campo5" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="bSalvar2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="campo1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="rotulo3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="campo4" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="bExcluir1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="campo2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="rotulo4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="campo1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="bConsultar1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="campo3" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="rotulo5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="campo2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="bLimpar1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="campo4" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="rotulo6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="campo3" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="bSair1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="campo5" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="65" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -174,7 +174,7 @@
             </Component>
             <Component class="padraotela.Rotulo" name="rotulo6">
               <Properties>
-                <Property name="text" type="java.lang.String" value="ANO T&#xc9;RMINO"/>
+                <Property name="text" type="java.lang.String" value="ANO CONCLUS&#xc3;O"/>
               </Properties>
             </Component>
             <Component class="padraotela.Campo" name="campo1">
@@ -203,10 +203,19 @@
               </Properties>
             </Component>
             <Component class="padraotela.BSalvar" name="bSalvar2">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bSalvar2ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="padraotela.BExcluir" name="bExcluir1">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bExcluir1ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="padraotela.BConsultar" name="bConsultar1">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bConsultar1ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="padraotela.BLimpar" name="bLimpar1">
               <Events>
@@ -276,6 +285,9 @@
               </Properties>
             </Component>
             <Component class="padraotela.BConsultar" name="bConsultar2">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bConsultar2ActionPerformed"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane1">
               <AuxValues>

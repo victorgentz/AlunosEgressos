@@ -4,6 +4,13 @@
  */
 package telas;
 
+import controles.Curso;
+import controles.CursoPK;
+import java.util.Iterator;
+import java.util.List;
+import javax.swing.JOptionPane;
+import persistencia.dao;
+
 /**
  *
  * @author victo
@@ -36,7 +43,7 @@ public class TCurso extends javax.swing.JFrame {
         rotulo4 = new padraotela.Rotulo();
         campo1 = new padraotela.Campo();
         campo2 = new padraotela.Campo();
-        campo4 = new padraotela.Campo();
+        campo3 = new padraotela.Campo();
         bSalvar1 = new padraotela.BSalvar();
         bExcluir1 = new padraotela.BExcluir();
         bConsultar1 = new padraotela.BConsultar();
@@ -44,18 +51,18 @@ public class TCurso extends javax.swing.JFrame {
         bSair1 = new padraotela.BSair();
         jPanel2 = new javax.swing.JPanel();
         rotulo5 = new padraotela.Rotulo();
-        campo3 = new padraotela.Campo();
         bConsultar2 = new padraotela.BConsultar();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        campo4 = new padraotela.Campo();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         rotulo1.setText("Curso");
 
-        rotulo2.setText("ID CURSO");
+        rotulo2.setText("ID INSTITUIÇÃO");
 
-        rotulo3.setText("ID INSTITUIÇÃO");
+        rotulo3.setText("ID CURSO");
 
         rotulo4.setText("NOME");
 
@@ -63,7 +70,25 @@ public class TCurso extends javax.swing.JFrame {
 
         campo2.setText("campo2");
 
-        campo4.setText("campo2");
+        campo3.setText("campo3");
+
+        bSalvar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSalvar1ActionPerformed(evt);
+            }
+        });
+
+        bExcluir1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bExcluir1ActionPerformed(evt);
+            }
+        });
+
+        bConsultar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bConsultar1ActionPerformed(evt);
+            }
+        });
 
         bLimpar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,29 +113,29 @@ public class TCurso extends javax.swing.JFrame {
                         .addComponent(rotulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rotulo3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(rotulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(rotulo4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(rotulo3, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                            .addComponent(rotulo4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rotulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(campo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(campo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                                .addComponent(bSalvar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(campo4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(bConsultar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(campo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(bExcluir1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bLimpar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bSair1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(bSalvar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(bLimpar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bSair1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(campo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(bExcluir1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -119,33 +144,36 @@ public class TCurso extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(rotulo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(campo2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(rotulo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(bSalvar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rotulo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bSalvar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campo1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rotulo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campo1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bExcluir1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bExcluir1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campo2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rotulo4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campo4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campo3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bConsultar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(bLimpar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(bSair1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Cadastro", jPanel1);
 
         rotulo5.setText("CURSO");
 
-        campo3.setText("campo3");
+        bConsultar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bConsultar2ActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -256,6 +284,8 @@ public class TCurso extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        campo4.setText("campo4");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -265,9 +295,9 @@ public class TCurso extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(rotulo5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(campo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(58, 58, 58)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(campo4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(78, 78, 78)
                         .addComponent(bConsultar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(13, Short.MAX_VALUE))
@@ -278,8 +308,8 @@ public class TCurso extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rotulo5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bConsultar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bConsultar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campo4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -308,6 +338,22 @@ public class TCurso extends javax.swing.JFrame {
     private void bSair1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSair1ActionPerformed
         sair();    // TODO add your handling code here:
     }//GEN-LAST:event_bSair1ActionPerformed
+
+    private void bSalvar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalvar1ActionPerformed
+        salvar();    // TODO add your handling code here:
+    }//GEN-LAST:event_bSalvar1ActionPerformed
+
+    private void bExcluir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bExcluir1ActionPerformed
+        excluir();    // TODO add your handling code here:
+    }//GEN-LAST:event_bExcluir1ActionPerformed
+
+    private void bConsultar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultar1ActionPerformed
+        consultar();    // TODO add your handling code here:
+    }//GEN-LAST:event_bConsultar1ActionPerformed
+
+    private void bConsultar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultar2ActionPerformed
+        pesquisa();    // TODO add your handling code here:
+    }//GEN-LAST:event_bConsultar2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -364,7 +410,88 @@ public class TCurso extends javax.swing.JFrame {
     public void limpar (){
         campo1.setText("");
         campo2.setText("");
-        campo4.setText("");
+        campo3.setText("");
     }
+    
+    public void salvar(){
+        Curso p = new Curso();
+        CursoPK pPK = new CursoPK();
+        pPK.setIdinstituicao(Integer.parseInt(campo1.getText()));
+        pPK.setIdcurso(campo2.getText());
+        p.setCursoPK(pPK);
+        p.setNome(campo3.getText());
+        try {
+            dao.salvar(p);
+        }
+        catch (Exception e){
+            JOptionPane.showMessageDialog(null, e, "***VERIFIQUE SE TODOS OS CADASTROS ANTERIORES FORAM FEITOS***", JOptionPane.ERROR_MESSAGE);
+        }
+        limpar();
+    }
+    
+    public void consultar(){
+        try{
+            Curso p = new Curso(); 
+            CursoPK pPK = new CursoPK(); 
+            pPK.setIdinstituicao(Integer.parseInt(campo1.getText())); 
+            pPK.setIdcurso(campo2.getText()); 
+            p.setCursoPK(pPK); 
+            p = dao.consultar(p);  
+            campo3.setText(p.getNome());
+        }
+        catch (Exception e){
+            JOptionPane.showMessageDialog(null, e, "***PERIODO NÃO EXISTE***", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void excluir () { 
+        try { 
+            Curso p = new Curso(); 
+            CursoPK pPK = new CursoPK(); 
+            pPK.setIdinstituicao(Integer.parseInt(campo1.getText())); 
+            pPK.setIdcurso(campo2.getText()); 
+            p.setCursoPK(pPK);     
+            dao.excluir(p);             
+        } 
+        catch (Exception e) { 
+            JOptionPane.showMessageDialog (null,e,"ERRO", JOptionPane.ERROR_MESSAGE); 
+        } 
+        limpar(); 
+    } 
+    
+    public void pesquisa() {
+        // Limpa tabela antes de cada pesquisa
+        for (int i = 0; i < jTable1.getRowCount(); i++) {
+            jTable1.setValueAt(" ", i, 0); // primeira coluna
+            jTable1.setValueAt(" ", i, 1); // segunda coluna
+            jTable1.setValueAt(" ", i, 2); // terceira coluna
+        }
 
+        try {
+            String textoCampo = campo4.getText().trim();
+            List<Curso> l;
+
+            if (textoCampo.isEmpty()) {
+                // Busca todos os cursos
+                l = dao.listar("Curso.findAll");
+            } else {
+                // Busca cursos por idinstituicao
+                int pesquisa = Integer.parseInt(textoCampo);
+                l = dao.listar("Curso.findByIdinstituicao", "idinstituicao", pesquisa);
+            }
+
+            int i = 0;
+            for (Curso st : l) {
+                CursoPK tPK = st.getCursoPK();
+                jTable1.setValueAt(tPK.getIdinstituicao(), i, 0);
+                jTable1.setValueAt(tPK.getIdcurso(), i, 1);
+                jTable1.setValueAt(st.getNome(), i, 2);
+                i++;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Digite apenas números no campo INSTITUIÇÃO.", "Erro de formato", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao consultar cursos: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }  
 }

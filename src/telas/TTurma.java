@@ -4,6 +4,13 @@
  */
 package telas;
 
+import controles.Turma;
+import controles.TurmaPK;
+import java.util.Iterator;
+import java.util.List;
+import javax.swing.JOptionPane;
+import persistencia.dao;
+
 /**
  *
  * @author victo
@@ -66,7 +73,7 @@ public class TTurma extends javax.swing.JFrame {
 
         rotulo5.setText("ANO INÍCIO");
 
-        rotulo6.setText("ANO TÉRMINO");
+        rotulo6.setText("ANO CONCLUSÃO");
 
         campo1.setText("campo1");
 
@@ -77,6 +84,24 @@ public class TTurma extends javax.swing.JFrame {
         campo4.setText("campo4");
 
         campo5.setText("campo5");
+
+        bSalvar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSalvar2ActionPerformed(evt);
+            }
+        });
+
+        bExcluir1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bExcluir1ActionPerformed(evt);
+            }
+        });
+
+        bConsultar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bConsultar1ActionPerformed(evt);
+            }
+        });
 
         bLimpar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,7 +128,7 @@ public class TTurma extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(rotulo6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                                .addComponent(rotulo6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                                 .addComponent(rotulo5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
                                 .addComponent(rotulo4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -113,24 +138,24 @@ public class TTurma extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(campo5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
-                                .addComponent(bSalvar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 167, Short.MAX_VALUE)
+                                .addComponent(bSair1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(campo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(bSair1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(bConsultar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(campo4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(bExcluir1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(bLimpar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(campo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(bConsultar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(bSalvar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(campo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(bLimpar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(bExcluir1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -141,29 +166,29 @@ public class TTurma extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rotulo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campo5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bSalvar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bSalvar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rotulo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campo4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bExcluir1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bExcluir1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rotulo4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bConsultar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bConsultar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rotulo5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bLimpar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bLimpar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campo4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rotulo6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bSair1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(bSair1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campo5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Cadastro", jPanel1);
@@ -171,6 +196,12 @@ public class TTurma extends javax.swing.JFrame {
         rotulo7.setText("TURMA");
 
         campo6.setText("campo6");
+
+        bConsultar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bConsultar2ActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -335,6 +366,22 @@ public class TTurma extends javax.swing.JFrame {
         sair();    // TODO add your handling code here:
     }//GEN-LAST:event_bSair1ActionPerformed
 
+    private void bConsultar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultar2ActionPerformed
+        pesquisa();    // TODO add your handling code here:
+    }//GEN-LAST:event_bConsultar2ActionPerformed
+
+    private void bSalvar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalvar2ActionPerformed
+        salvar();    // TODO add your handling code here:
+    }//GEN-LAST:event_bSalvar2ActionPerformed
+
+    private void bExcluir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bExcluir1ActionPerformed
+        excluir();    // TODO add your handling code here:
+    }//GEN-LAST:event_bExcluir1ActionPerformed
+
+    private void bConsultar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultar1ActionPerformed
+        consultar();    // TODO add your handling code here:
+    }//GEN-LAST:event_bConsultar1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -399,5 +446,91 @@ public class TTurma extends javax.swing.JFrame {
         campo4.setText("");
         campo5.setText("");
     }
+    
+    public void salvar() {
+        Turma t = new Turma();
+        TurmaPK tPK = new TurmaPK();
+        tPK.setIdturma(campo1.getText());
+        tPK.setIdcurso(campo2.getText());
+        tPK.setIdinstituicao(Integer.parseInt(campo3.getText()));
+        t.setTurmaPK(tPK);
+        t.setAnoinicio(Integer.parseInt(campo4.getText()));
+        t.setAnoconclusao(Integer.parseInt(campo5.getText()));
+        try {
+            dao.salvar(t);
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "***VERIFIQUE SE TODOS OS CADASTROS ANTERIORES FORAM FEITOS***", JOptionPane.ERROR_MESSAGE);
+        }
+        limpar();
+    }
+    
+    public void consultar() {
+        try {
+            Turma t = new Turma();
+            TurmaPK tPK = new TurmaPK();
+            tPK.setIdturma(campo1.getText());
+            tPK.setIdcurso(campo2.getText());
+            tPK.setIdinstituicao(Integer.parseInt(campo3.getText()));
+            t.setTurmaPK(tPK);
+            t = dao.consultar(t);
+            campo4.setText(String.valueOf(t.getAnoinicio()));
+            campo5.setText(String.valueOf(t.getAnoconclusao()));
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "***TURMA NÃO ENCONTRADA***", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void excluir() {
+        try {
+            Turma t = new Turma();
+            TurmaPK tPK = new TurmaPK();
+            tPK.setIdturma(campo1.getText());
+            tPK.setIdcurso(campo2.getText());
+            tPK.setIdinstituicao(Integer.parseInt(campo3.getText()));
+            t.setTurmaPK(tPK);
+            dao.excluir(t);
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "ERRO AO EXCLUIR", JOptionPane.ERROR_MESSAGE);
+        }
+        limpar();
+    }
+    
+    public void pesquisa() {
+        // Limpa tabela antes de cada pesquisa
+        for (int i = 0; i < jTable1.getRowCount(); i++) {
+            for (int j = 0; j < 5; j++) {
+                jTable1.setValueAt(" ", i, j);
+            }
+        }
 
+        try {
+            String idTurma = campo6.getText().trim();
+            List<Turma> l;
+
+            if (idTurma.isEmpty()) {
+                // Busca todas as turmas
+                l = dao.listar("Turma.findAll");
+            } else {
+                // Busca por idturma específica
+                l = dao.listar("Turma.findByIdturma", "idturma", idTurma);
+            }
+
+            int i = 0;
+            for (Turma t : l) {
+                TurmaPK tPK = t.getTurmaPK();
+                jTable1.setValueAt(tPK.getIdturma(), i, 0);
+                jTable1.setValueAt(tPK.getIdcurso(), i, 1);
+                jTable1.setValueAt(tPK.getIdinstituicao(), i, 2);
+                jTable1.setValueAt(t.getAnoinicio(), i, 3);
+                jTable1.setValueAt(t.getAnoconclusao(), i, 4);
+                i++;
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Erro ao consultar turmas: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+                }
+}
+    
 }
