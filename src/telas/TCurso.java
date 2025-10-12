@@ -9,6 +9,7 @@ import controles.CursoPK;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import persistencia.dao;
 
 /**
@@ -279,7 +280,7 @@ public class TCurso extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "CURSO", "INSTITUIÇÃO", "NOME"
+                "INSTITUIÇÃO", "CURSO", "NOME"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -457,41 +458,46 @@ public class TCurso extends javax.swing.JFrame {
             JOptionPane.showMessageDialog (null,e,"ERRO", JOptionPane.ERROR_MESSAGE); 
         } 
         limpar(); 
-    } 
+    }
     
     public void pesquisa() {
-        // Limpa tabela antes de cada pesquisa
-        for (int i = 0; i < jTable1.getRowCount(); i++) {
-            jTable1.setValueAt(" ", i, 0); // primeira coluna
-            jTable1.setValueAt(" ", i, 1); // segunda coluna
-            jTable1.setValueAt(" ", i, 2); // terceira coluna
-        }
-
         try {
-            String textoCampo = campo4.getText().trim();
-            List<Curso> l;
+            // Obtém o modelo da tabela
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0); // limpa todas as linhas antes de preencher
 
+            // Obtém o texto do campo
+            String textoCampo = campo4.getText().toUpperCase().trim();
+            List<Curso> listaCursos;
+
+            // Decide a pesquisa conforme o campo estiver vazio ou não
             if (textoCampo.isEmpty()) {
-                // Busca todos os cursos
-                l = dao.listar("Curso.findAll");
+                listaCursos = dao.listar("Curso.findAll");
             } else {
-                // Busca cursos por idinstituicao
-                int pesquisa = Integer.parseInt(textoCampo);
-                l = dao.listar("Curso.findByIdinstituicao", "idinstituicao", pesquisa);
+                // Adiciona % para busca parcial (LIKE)
+                String pesquisa = "%" + textoCampo + "%";
+                listaCursos = dao.listar("Curso.pesquisaNome", "nome", pesquisa);
             }
 
-            int i = 0;
-            for (Curso st : l) {
-                CursoPK tPK = st.getCursoPK();
-                jTable1.setValueAt(tPK.getIdinstituicao(), i, 0);
-                jTable1.setValueAt(tPK.getIdcurso(), i, 1);
-                jTable1.setValueAt(st.getNome(), i, 2);
-                i++;
+            // Preenche a tabela com os resultados
+            for (Curso curso : listaCursos) {
+                CursoPK chave = curso.getCursoPK();
+                model.addRow(new Object[]{
+                    chave.getIdinstituicao(),
+                    chave.getIdcurso(),
+                    curso.getNome()
+                });
             }
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Digite apenas números no campo INSTITUIÇÃO.", "Erro de formato", JOptionPane.ERROR_MESSAGE);
+
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao consultar cursos: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(
+                null,
+                "Erro ao consultar cursos: " + e.getMessage(),
+                "Erro",
+                JOptionPane.ERROR_MESSAGE
+            );
         }
-    }  
+    }
+
+    
 }

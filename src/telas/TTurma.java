@@ -507,7 +507,7 @@ public class TTurma extends javax.swing.JFrame {
         }
 
         try {
-            String idTurma = campo6.getText().trim();
+            String idTurma = campo6.getText().toUpperCase().trim();
             List<Turma> l;
 
             if (idTurma.isEmpty()) {
