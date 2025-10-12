@@ -323,8 +323,8 @@ public class TConsultaAlunosTurma extends javax.swing.JFrame {
             jTable1.setValueAt(" ", i, 6); // limpa a tabela: linhas e sétima  coluna
         } 
         int pesquisa1 = (Integer.parseInt(campo1.getText())); 
-        String pesquisa2 = campo2.getText(); 
-        String pesquisa3 = campo3.getText(); 
+        String pesquisa2 = campo2.getText().toUpperCase(); 
+        String pesquisa3 = campo3.getText().toUpperCase(); 
         List l = dao.listar("Aluno.ConsultaTurma", "idinstituicao", pesquisa1, "idcurso", pesquisa2, "idturma", pesquisa3); 
         Iterator itensIterator = l.iterator(); 
         int i = 0; 

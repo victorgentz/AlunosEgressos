@@ -42,6 +42,8 @@ public class TPrincipal extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -133,6 +135,17 @@ public class TPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        jMenu3.setText("Consulta Documentos");
+        jMenuBar1.add(jMenu3);
+
+        jMenu4.setText("Sobre");
+        jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenu4MousePressed(evt);
+            }
+        });
+        jMenuBar1.add(jMenu4);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -189,6 +202,10 @@ public class TPrincipal extends javax.swing.JFrame {
         TConAluInsCurTurm ();    // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
+    private void jMenu4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MousePressed
+        telasobre();    // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu4MousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -217,6 +234,8 @@ public class TPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
@@ -285,6 +304,12 @@ public class TPrincipal extends javax.swing.JFrame {
     public void TConAluInsCurTurm () {
         TConsultaAlunosTurma t = new TConsultaAlunosTurma ();
         t.setTitle("Consulta de alunos por instituição, curso e turma");
+        t.setVisible(true);
+    }
+
+    public void telasobre () {
+        TSobre t = new TSobre ();
+        t.setTitle("Sobre o sistema");
         t.setVisible(true);
     }
     
