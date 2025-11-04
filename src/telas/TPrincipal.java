@@ -136,6 +136,11 @@ public class TPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Consulta Documentos");
+        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenu3MousePressed(evt);
+            }
+        });
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Sobre");
@@ -205,6 +210,10 @@ public class TPrincipal extends javax.swing.JFrame {
     private void jMenu4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MousePressed
         telasobre();    // TODO add your handling code here:
     }//GEN-LAST:event_jMenu4MousePressed
+
+    private void jMenu3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MousePressed
+        telaBuscaDoc();    // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu3MousePressed
 
     /**
      * @param args the command line arguments
@@ -310,6 +319,12 @@ public class TPrincipal extends javax.swing.JFrame {
     public void telasobre () {
         TSobre t = new TSobre ();
         t.setTitle("Sobre o sistema");
+        t.setVisible(true);
+    }
+    
+    public void telaBuscaDoc () {
+        TBuscaDocumentos t = new TBuscaDocumentos ();
+        t.setTitle("Busca de documentos");
         t.setVisible(true);
     }
     

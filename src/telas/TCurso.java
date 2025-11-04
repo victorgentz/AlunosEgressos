@@ -445,19 +445,20 @@ public class TCurso extends javax.swing.JFrame {
         }
     }
     
-    public void excluir () { 
-        try { 
-            Curso p = new Curso(); 
-            CursoPK pPK = new CursoPK(); 
-            pPK.setIdinstituicao(Integer.parseInt(campo1.getText())); 
-            pPK.setIdcurso(campo2.getText()); 
-            p.setCursoPK(pPK);     
-            dao.excluir(p);             
+   
+    public void excluir() {
+        try {
+            Curso p = new Curso();
+            CursoPK pPK = new CursoPK();
+            pPK.setIdinstituicao(Integer.parseInt(campo1.getText()));
+            pPK.setIdcurso(campo2.getText().toUpperCase());
+            p.setCursoPK(pPK);
+            p.setNome("placeholder");
+            dao.excluir(p);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "ERRO", JOptionPane.ERROR_MESSAGE);
         } 
-        catch (Exception e) { 
-            JOptionPane.showMessageDialog (null,e,"ERRO", JOptionPane.ERROR_MESSAGE); 
-        } 
-        limpar(); 
+        limpar();
     }
     
     public void pesquisa() {

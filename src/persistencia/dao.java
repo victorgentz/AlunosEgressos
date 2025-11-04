@@ -64,7 +64,7 @@ public class dao {
         ent.getTransaction().commit(); 
         return r; 
     } 
-     public static void excluir (Object objeto) { 
+    public static void excluir (Object objeto) { 
         // Dara erro com toplink e com campos not null do objeto no update!!! 
         EntityManager ent; 
         ent = Persistence.createEntityManagerFactory("UP").createEntityManager(); 
