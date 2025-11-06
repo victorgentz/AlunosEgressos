@@ -21,7 +21,7 @@ import javax.persistence.Table;
 @Table(name = "aluno")
 @NamedQueries({
     @NamedQuery(name = "Aluno.findAll", query = "SELECT a FROM Aluno a"),
-    @NamedQuery(name = "Aluno.pesquisaNome", query = "SELECT a FROM Aluno a WHERE a.nome like :nome"),
+    @NamedQuery(name = "Aluno.pesquisaNome", query = "SELECT a FROM Aluno a WHERE UPPER(a.nome) LIKE UPPER (:nome)"),
     @NamedQuery(name = "Aluno.findByCpf", query = "SELECT a FROM Aluno a WHERE a.cpf = :cpf"),
     @NamedQuery(name = "Aluno.findByIdinstituicao", query = "SELECT a FROM Aluno a WHERE a.idinstituicao = :idinstituicao"),
     @NamedQuery(name = "Aluno.findByNome", query = "SELECT a FROM Aluno a WHERE a.nome = :nome"),

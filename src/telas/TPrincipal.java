@@ -135,7 +135,7 @@ public class TPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setText("Consulta Documentos");
+        jMenu3.setText("Buscar Documentos");
         jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jMenu3MousePressed(evt);
